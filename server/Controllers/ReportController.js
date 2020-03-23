@@ -14,17 +14,19 @@ class ReportController {
     }
     static addReport (req, res, next){
         let UserId = Number(req.userData.id)
-        let {cases, CountryId} = req.body;
+        let cases = Number(req.body.cases);
+        let CountryId = Number(req.body.CountryId)
         let country = null
         Country.findOne({where: {id: CountryId}})
         .then(result => {
             if(result){
                 country = result;
+                let totalCases = cases+Number(country.cases);
                 return Country.update({
                     name: country.name,
                     deaths: country.deaths,
                     recovered: country.recovered,
-                    cases: cases
+                    cases: totalCases,
                 }, {where: {id: CountryId}})
             }else{
                 next({status: 404, message: 'Country not found'})
