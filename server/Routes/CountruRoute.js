@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const CountryController = require('../Controllers/CountriesController')
 
-router.get('/', CountryController.getCountries)
+const authentication = require('../Middlewares/authenctication')
+
+router.get('/', authentication, CountryController.getCountries)
 
 module.exports = router
