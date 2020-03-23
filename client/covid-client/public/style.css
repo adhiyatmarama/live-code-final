@@ -1,0 +1,37 @@
+@font-face {
+    font-family: gotham;
+    src: url(./font/Gotham-Book.otf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+    margin: 0;
+    font-family: gotham;
+    min-height: 100vh;
+}
+
+.header{
+    width: 100%; height: 80px; display: flex; align-items: center; justify-content: flex-end;
+}
+.navbar{
+    float: right; margin-right: 20px;
+}
+.navbar a{
+    margin: 0px 10px; text-decoration: none; color: black; text-transform: uppercase;
+}
+.home{
+    width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;
+}
+.sign-in h1{
+    font-size: 23px;
+}
+.sign-in{
+    width: 50%; width: auto; padding: 10px 10px; text-align: center; margin: 0px auto;
+}
+.sign-in form input{
+    width: 250px; height: 30px; margin-bottom: 10px; padding: 5px 5px; font-size: 15px;
+}
+.sign-in form button{
+    width: 262px; height: 45px; margin-bottom: 5px; padding: 5px 5px; font-size: 15px;
+}

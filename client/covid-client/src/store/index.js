@@ -6,10 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     isLogin: false,
+    baseUrl: 'http://localhost:3000',
   },
   mutations: {
     changeIsLogin(state, data) {
-      state.isLogin = data
+      state.isLogin = data;
     },
   },
   actions: {
