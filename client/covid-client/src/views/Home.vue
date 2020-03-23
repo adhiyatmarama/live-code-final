@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     signIn() {
-      console.log(this.username);
       const options = {
         url: `${this.$store.state.baseUrl}/login`,
         method: 'post',

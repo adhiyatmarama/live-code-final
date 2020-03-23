@@ -4,6 +4,12 @@
     font-weight: 400;
     font-style: normal;
 }
+@font-face {
+    font-family: gotham;
+    src: url(./font/Gotham-Medium.otf);
+    font-weight: 500;
+    font-style: normal;
+}
 
 body{
     margin: 0;
@@ -29,9 +35,37 @@ body{
 .sign-in{
     width: 50%; width: auto; padding: 10px 10px; text-align: center; margin: 0px auto;
 }
-.sign-in form input{
+.sign-in form input, .add-report form input{
     width: 250px; height: 30px; margin-bottom: 10px; padding: 5px 5px; font-size: 15px;
 }
-.sign-in form button{
+.sign-in form button, .add-report form button{
     width: 262px; height: 45px; margin-bottom: 5px; padding: 5px 5px; font-size: 15px;
+}
+.countries{
+    width: 90%; height: auto; display: flex; justify-content: space-around; flex-wrap: wrap; margin: 5px auto;
+}
+.card{
+    width: 300px; height: auto; border: 2px solid black; margin: 20px 10px; padding: 10px 15px;
+}
+.details{
+    display: flex; margin-bottom: 20px;
+}
+.cases{
+    margin-right: 40px;
+}
+.deaths{
+    margin-right: 40px; color: rgb(255, 91, 91);
+}
+.recovered{
+    color: rgb(41, 177, 41)
+}
+.add-report{
+    text-align: center; width: 100%;
+}
+.add-report form select{
+    width: 260px; height: 30px; margin-bottom: 10px; padding: 5px 5px; font-size: 15px;
+}
+
+.reports{
+    display: flex; flex-wrap: wrap; justify-content: space-around;
 }

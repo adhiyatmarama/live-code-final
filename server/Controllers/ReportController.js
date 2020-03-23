@@ -3,7 +3,7 @@ const {Country, Report} = require('../models')
 class ReportController {
     static getReports(req, res, next){
         let UserId = Number(req.userData.id)
-        Report.findAll({where: {UserId}})
+        Report.findAll({where: {UserId}, include: Country})
         .then(result => {
             res.status(200).json(result)
         })
@@ -17,6 +17,7 @@ class ReportController {
         let cases = Number(req.body.cases);
         let CountryId = Number(req.body.CountryId)
         let country = null
+        console.log(CountryId, '<< ini country')
         Country.findOne({where: {id: CountryId}})
         .then(result => {
             if(result){
