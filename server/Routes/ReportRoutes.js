@@ -4,5 +4,6 @@ const authentication = require('../Middlewares/authenctication');
 const authorization = require('../Middlewares/authorization');
 
 router.get('/', authentication, ReportController.getReports)
+router.post('/', authentication, ReportController.addReport)
 
 module.exports = router
