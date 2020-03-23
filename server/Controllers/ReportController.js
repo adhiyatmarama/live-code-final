@@ -58,10 +58,12 @@ class ReportController {
         let id = Number(req.params.id)
         let reportCases = null
         let updatedCountry = null
+        let countryId = null
         Report.findOne({where: {id}})
         .then(result => {
             if(result){
                 reportCases = Number(result.cases);
+                countryId = Number(result.CountryId)
                 return Country.findOne({where: {id: result.CountryId}})
             }else{
                 next({status: 404, message: 'Report Not Found'})
@@ -86,9 +88,14 @@ class ReportController {
         })
         .then(result => {
             if(result){
-                res.status(200).json({country: updatedCountry, report: 'Successfully delete'})
+                return Country.findOne({where: {id: countryId}})
             }else{
                 next({status: 404, message: 'Failed delete Report'})
+            }
+        })
+        .then(country2 => {
+            if(country2) {
+                res.status(200).json({country: country2, report: 'Successfully delete'})
             }
         })
         .catch(err => {
