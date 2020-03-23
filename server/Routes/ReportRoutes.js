@@ -5,5 +5,6 @@ const authorization = require('../Middlewares/authorization');
 
 router.get('/', authentication, ReportController.getReports)
 router.post('/', authentication, ReportController.addReport)
+router.delete('/:id', authentication, authorization, ReportController.deleteReport)
 
 module.exports = router

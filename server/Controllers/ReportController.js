@@ -54,6 +54,48 @@ class ReportController {
             next({status: 500, message: 'Server Error'})
         })
     }
+    static deleteReport(req, res, next){
+        let id = Number(req.params.id)
+        let reportCases = null
+        let updatedCountry = null
+        Report.findOne({where: {id}})
+        .then(result => {
+            if(result){
+                reportCases = Number(result.cases);
+                return Country.findOne({where: {id: result.CountryId}})
+            }else{
+                next({status: 404, message: 'Report Not Found'})
+            }
+        })
+        .then(country => {
+            if(country){
+                let newCases = Number(country.cases) - reportCases
+                updatedCountry = {
+                    name: country.name,
+                    deaths: country.deaths,
+                    recovered: country.recovered,
+                    cases: newCases
+                }
+                return Country.update(updatedCountry, {where: {id: country.id}})
+            }
+        })
+        .then(result => {
+            if(result){
+                return Report.destroy({where: {id}})
+            }
+        })
+        .then(result => {
+            if(result){
+                res.status(200).json({country: updatedCountry, report: 'Successfully delete'})
+            }else{
+                next({status: 404, message: 'Failed delete Report'})
+            }
+        })
+        .catch(err => {
+            console.log(err, '<< ini dari delete report')
+            next({status: 500, message: 'Server Error'})
+        })
+    }
 }
 
 module.exports = ReportController
